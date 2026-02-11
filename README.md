@@ -76,8 +76,7 @@ docker-compose up -d
 
 3. Open [localhost:3000](http://localhost:3000)
 
-* Grafana login: `xxken`
-* Password: `xxkenxyz`
+Login credentials are configured in `.grafana` file.
 
 ## 📊 Current Configuration
 
