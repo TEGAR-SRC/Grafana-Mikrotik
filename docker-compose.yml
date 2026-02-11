@@ -1,5 +1,9 @@
 version: '3.9'
 
+networks:
+  monitoring:
+    driver: bridge
+
 services:
   grafana:
     image: grafana/grafana:9.0.5
@@ -11,6 +15,10 @@ services:
       - ./grafana/provisioning/:/etc/grafana/provisioning/
     ports:
       - "3000:3000"
+    networks:
+      - monitoring
+    depends_on:
+      - prometheus
   
   prometheus:
     image: prom/prometheus
@@ -24,6 +32,8 @@ services:
       - ./prometheus/data/:/prometheus
     ports:
       - "9090:9090"
+    networks:
+      - monitoring
 
   snmp_exporter:
     image: prom/snmp-exporter
@@ -33,5 +43,7 @@ services:
       - ./snmp/:/etc/snmp_exporter/
     ports:
       - "9116:9116"
+    networks:
+      - monitoring
     depends_on:
       - prometheus
