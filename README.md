@@ -36,6 +36,20 @@ bash install.sh
 - **Repository:** https://github.com/TEGAR-SRC/Grafana-Mikrotik.git
 - **ZIP Download:** https://github.com/TEGAR-SRC/Grafana-Mikrotik/archive/refs/heads/main.zip
 
+### Update Existing Installation
+If you already have Grafana-Mikrotik installed and want to update:
+```bash
+cd Grafana-Mikrotik
+curl -fsSL https://raw.githubusercontent.com/TEGAR-SRC/Grafana-Mikrotik/main/update.sh | bash
+```
+
+### Manage IPs and Settings
+Easily add/remove IPs or update credentials:
+```bash
+cd Grafana-Mikrotik
+curl -fsSL https://raw.githubusercontent.com/TEGAR-SRC/Grafana-Mikrotik/main/manage-ips.sh | bash
+```
+
 ## 🐳 Deploy with docker-compose
 
 ### Deploy with bash script
@@ -125,6 +139,9 @@ GF_SECURITY_ADMIN_PASSWORD=YOUR_PASSWORD
 - Restart services: `docker-compose restart`
 - View logs: `docker-compose logs -f`
 - Update config: `docker-compose up -d --force-recreate`
+- **Update installation:** `bash update.sh`
+- **Manage IPs/settings:** `bash manage-ips.sh`
+- **Fix network issues:** `bash fix-network.sh`
 
 ## 📋 Requirements
 
