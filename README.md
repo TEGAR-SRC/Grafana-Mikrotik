@@ -2,8 +2,8 @@
 
 ![logo](https://repository-images.githubusercontent.com/366494855/c62052b8-17c2-47f2-a3ae-0e397a3ef074)
 
-![visitors](https://visitor-badge.laobi.icu/badge?page_id=IgorKha.Grafana-Mikrotik)
-![example branch parameter](https://github.com/IgorKha/Grafana-Mikrotik/actions/workflows/action.yml/badge.svg?branch=master)
+![visitors](https://visitor-badge.laobi.icu/badge?page_id=TEGAR-SRC.Grafana-Mikrotik)
+![example branch parameter](https://github.com/TEGAR-SRC/Grafana-Mikrotik/actions/workflows/action.yml/badge.svg?branch=main)
 ![mikrotikOS](https://img.shields.io/badge/Mikrotik_ROS-v7.4-blue)
 ![Grafana](https://img.shields.io/badge/Grafana-v9.0.5-orange?logo=grafana)
 ![Prometheus](https://img.shields.io/badge/Prometheus-v2.37.0-red?logo=prometheus)
@@ -13,9 +13,28 @@
 
 ## 🚀 Quick Install (One Command)
 
+### Auto Installer (Recommended)
 ```bash
 curl -fsSL https://raw.githubusercontent.com/TEGAR-SRC/Grafana-Mikrotik/main/install.sh | bash
 ```
+
+### Download & Run Manual
+```bash
+# Linux/macOS
+wget https://raw.githubusercontent.com/TEGAR-SRC/Grafana-Mikrotik/main/install.sh
+chmod +x install.sh
+./install.sh
+```
+
+```powershell
+# Windows PowerShell
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/TEGAR-SRC/Grafana-Mikrotik/main/install.sh" -OutFile "install.sh"
+bash install.sh
+```
+
+### Direct Download
+- **Repository:** https://github.com/TEGAR-SRC/Grafana-Mikrotik.git
+- **ZIP Download:** https://github.com/TEGAR-SRC/Grafana-Mikrotik/archive/refs/heads/main.zip
 
 ## 🐳 Deploy with docker-compose
 
