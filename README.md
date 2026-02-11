@@ -1,4 +1,4 @@
-# Grafana-Mikrotik
+# Grafana Mikrotik Monitoring
 
 ![logo](https://repository-images.githubusercontent.com/366494855/c62052b8-17c2-47f2-a3ae-0e397a3ef074)
 
@@ -9,16 +9,20 @@
 ![Prometheus](https://img.shields.io/badge/Prometheus-v2.37.0-red?logo=prometheus)
 ![snmp_exporter](https://img.shields.io/badge/snmp__exporter-v0.20.0-red?logo=prometheus)
 
-[![Donate using Liberapay](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/~1772367/donate)
-
 ---
+
+## 🚀 Quick Install (One Command)
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/TEGAR-SRC/Grafana-Mikrotik/main/install.sh | bash
+```
 
 ## 🐳 Deploy with docker-compose
 
 ### Deploy with bash script
 
 ```console
-git clone https://github.com/IgorKha/Grafana-Mikrotik.git
+git clone https://github.com/TEGAR-SRC/Grafana-Mikrotik.git
 cd ./Grafana-Mikrotik
 bash ./run.sh --config
 ```
@@ -43,21 +47,82 @@ For example:
 
 ### deploy with docker-compose manual
 
-1.Change targets ip (192.168.88.1) into file prometheus/prometheus.yml
+1. Change targets IP in file `prometheus/prometheus.yml` (already configured with multiple IPs)
 
-2.Run
+2. Run
 
 ```console
 docker-compose up -d
 ```
 
-3.Open [localhost:3000](http://localhost:3000)
+3. Open [localhost:3000](http://localhost:3000)
 
-* Grafana login: `admin`
+* Grafana login: `xxken`
+* Password: `xxkenxyz`
 
-* Password: `mikrotik`
+## 📊 Current Configuration
 
-If you want to change the credentials, then edit the ".env" file
+### Mikrotik IPs Being Monitored:
+- 10.10.10.1
+- 172.16.1.1
+- 103.144.46.1
+- 103.144.46.18
+- 103.144.46.219
+
+### SNMP Community String
+- Community: `xxkenxyz`
+
+### To Add/Remove IPs
+Edit `prometheus/prometheus.yml`:
+```yaml
+- job_name: Mikrotik
+  static_configs:
+    - targets:
+      - YOUR_IP_HERE
+```
+
+Edit `.prometheus` file:
+```bash
+MIKROTIK_IP=IP1,IP2,IP3
+```
+
+### To Change SNMP Community
+Edit `snmp/snmp.yml`:
+```yaml
+auths:
+    public_v2:
+        community: YOUR_COMMUNITY_STRING
+```
+
+### To Change Grafana Credentials
+Edit `.grafana` file:
+```bash
+GF_SECURITY_ADMIN_USER=YOUR_USERNAME
+GF_SECURITY_ADMIN_PASSWORD=YOUR_PASSWORD
+```
+
+## 🔧 Commands
+
+- Stop services: `docker-compose down`
+- Restart services: `docker-compose restart`
+- View logs: `docker-compose logs -f`
+- Update config: `docker-compose up -d --force-recreate`
+
+## 📋 Requirements
+
+- Docker
+- Docker Compose
+- Mikrotik devices with SNMP enabled
+
+## 🔒 Mikrotik SNMP Setup
+
+On each Mikrotik device:
+```
+/snmp
+set enabled=yes
+/community
+add name=xxkenxyz addresses=YOUR_GRAFANA_IP
+```
 
 ---
 
